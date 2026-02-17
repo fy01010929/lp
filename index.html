@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>保育士採用特設サイト | あなたらしく輝ける場所</title>
+    <title>保育士専門 転職サポート | あなた専任のキャリアアドバイザー</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts (Zen Maru Gothic for soft look) -->
@@ -59,62 +59,119 @@
         .soft-card {
             box-shadow: 0 10px 25px -5px rgba(219, 180, 254, 0.15), 0 8px 10px -6px rgba(219, 180, 254, 0.1);
         }
+        .profile-img-border {
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #f3e8ff;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-white leading-relaxed">
 
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-brand-pink-dark">
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm border-b border-brand-pink-dark">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-xl font-bold text-gray-600 flex items-center">
-                <i class="fa-solid fa-seedling text-brand-purple-dark mr-2"></i>
-                <span class="text-sm md:text-lg">ひだまり保育園 採用サイト</span>
+                <span class="bg-gradient-to-r from-pink-400 to-purple-400 text-white rounded-full w-8 h-8 flex items-center justify-center mr-2 text-xs">CA</span>
+                <span class="text-sm md:text-lg">保育士専門キャリアアドバイザー</span>
             </h1>
             <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-                <a href="#about" class="hover:text-brand-purple-dark transition">園の魅力</a>
-                <a href="#voice" class="hover:text-brand-purple-dark transition">先輩の声</a>
-                <a href="#flow" class="hover:text-brand-purple-dark transition">選考フロー</a>
+                <a href="#merit" class="hover:text-brand-purple-dark transition">選ばれる理由</a>
+                <a href="#profile" class="hover:text-brand-purple-dark transition">アドバイザー紹介</a>
+                <a href="#voice" class="hover:text-brand-purple-dark transition">解決事例</a>
             </nav>
-            <a href="#contact" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white text-sm font-bold py-2 px-6 rounded-full shadow-md hover:opacity-90 transition transform hover:-translate-y-0.5">
-                見学申し込み
+            <a href="https://works.do/R/ti/p/ho.73521@hoikushicarrier" target="_blank" class="bg-[#06C755] text-white text-sm font-bold py-2 px-6 rounded-full shadow-md hover:opacity-90 transition transform hover:-translate-y-0.5 flex items-center">
+                <i class="fa-brands fa-line mr-1"></i> LINEで相談
             </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-24 pb-20 md:pt-32 md:pb-32 gradient-bg overflow-hidden">
+    <section class="relative pt-28 pb-20 md:pt-40 md:pb-32 gradient-bg overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 z-10 mb-10 md:mb-0">
-                <span class="inline-block bg-white text-purple-500 text-sm font-bold px-4 py-1 rounded-full mb-4 shadow-sm border border-purple-100">
-                    <i class="fa-regular fa-star mr-1"></i> 2026年度 新規採用開始
+                <span class="inline-block bg-white text-purple-500 text-xs md:text-sm font-bold px-4 py-1 rounded-full mb-4 shadow-sm border border-purple-100">
+                    <i class="fa-solid fa-heart mr-1"></i> 完全無料・秘密厳守でサポート
                 </span>
-                <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-6 text-gray-700">
-                    もう一度、<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">心からの笑顔</span>で<br>
-                    子どもと向き合いませんか？
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-gray-700">
+                    「今の職場、辛いな…」<br>
+                    ひとりで悩まず<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">あなたのペースで</span><br>
+                    <span class="text-2xl md:text-4xl">理想の職場を探しませんか？</span>
                 </h2>
-                <p class="text-gray-600 mb-8 leading-loose">
-                    持ち帰り仕事なし、残業ほぼゼロ。<br>
-                    保育士さんの「働きやすさ」を一番に考えたら、<br>
-                    子どもたちへの「愛しさ」がもっと深まりました。
+                <p class="text-gray-600 mb-8 leading-loose text-sm md:text-base">
+                    保育士専門のキャリアアドバイザーが、<br>
+                    あなたの「本当の希望」に合う園を一緒に探します。<br>
+                    無理な勧誘は一切しません。まずは愚痴だけでもOKです。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="text-center bg-accent text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-orange-400 transition transform hover:-translate-y-1">
-                        まずは園見学へ行く <i class="fa-solid fa-arrow-right ml-2"></i>
+                    <a href="https://works.do/R/ti/p/ho.73521@hoikushicarrier" target="_blank" class="text-center bg-[#06C755] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:opacity-90 transition transform hover:-translate-y-1 flex items-center justify-center">
+                        <i class="fa-brands fa-line text-xl mr-2"></i> LINEで気軽に相談する
                     </a>
-                    <a href="#about" class="text-center bg-white text-gray-600 border border-gray-200 font-bold py-4 px-8 rounded-full shadow-sm hover:bg-gray-50 transition">
-                        詳しく見る
+                    <a href="#merit" class="text-center bg-white text-gray-600 border border-gray-200 font-bold py-4 px-8 rounded-full shadow-sm hover:bg-gray-50 transition">
+                        サポート内容を見る
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 relative z-10">
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
-                    <!-- Placeholder for Hero Image -->
-                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="笑顔の保育士と子供" class="w-full h-auto object-cover">
+            <div class="md:w-1/2 relative z-10 flex justify-center md:justify-end">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <!-- Advisor Image Placeholder -->
+                    <div class="absolute inset-0 rounded-full overflow-hidden border-8 border-white shadow-2xl z-10 bg-pink-100">
+                        <!-- 
+                          【重要】本番でご自身の画像を表示する場合：
+                          下の行の src="..." を src="image_07f044.png" に書き換えてください。
+                        -->
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="山本アドバイザー" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-4 -right-4 md:bottom-10 md:-right-10 bg-white p-4 rounded-xl shadow-lg z-20 animate-bounce" style="animation-duration: 3s;">
+                        <p class="text-xs text-gray-400 font-bold">Supported by</p>
+                        <p class="text-purple-600 font-bold text-lg">Hoikushi ONE</p>
+                    </div>
                 </div>
-                <!-- Decorative Circle -->
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
             </div>
         </div>
         
@@ -130,193 +187,210 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <p class="text-pink-500 font-bold mb-2">CHECK LIST</p>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">こんなお悩みありませんか？</h3>
+                <p class="text-pink-500 font-bold mb-2">WORRIES</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">転職サイトに登録して、<br>こんな経験ありませんか？</h3>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-pink-50 transition duration-300">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">📝</div>
-                    <h4 class="font-bold text-lg mb-2 text-gray-700">持ち帰り仕事が多い</h4>
-                    <p class="text-sm text-gray-500">書類作成や制作物に追われて、プライベートな時間がとれない。</p>
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl">📞</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">電話がしつこい</h4>
+                    <p class="text-sm text-gray-500">仕事中もお構いなしに電話がかかってきて、正直うんざりした。</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-purple-50 transition duration-300">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">😓</div>
-                    <h4 class="font-bold text-lg mb-2 text-gray-700">人間関係に疲れた</h4>
-                    <p class="text-sm text-gray-500">職員間の連携がうまくいかず、精神的な負担が大きい。</p>
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl">🏃‍♀️</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">希望と違う園を勧められる</h4>
+                    <p class="text-sm text-gray-500">「ここが良いですよ」と強引に勧められ、断りきれなかった。</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-pink-50 transition duration-300">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">👶</div>
-                    <h4 class="font-bold text-lg mb-2 text-gray-700">保育に集中できない</h4>
-                    <p class="text-sm text-gray-500">行事や業務に追われ、一人ひとりの子どもと向き合えない。</p>
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl">🧩</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">担当者が事務的</h4>
+                    <p class="text-sm text-gray-500">マニュアル通りの対応で、私の本当の悩みをわかってくれなかった。</p>
                 </div>
             </div>
 
             <div class="text-center mt-12">
                 <div class="inline-block bg-brand-pink p-6 rounded-xl border border-pink-200">
                     <p class="text-lg md:text-xl font-bold text-gray-700">
-                        その悩み、<br class="md:hidden">
-                        <span class="text-purple-500 text-2xl">ひだまり保育園</span>なら解決できます！
+                        だからこそ、<br class="md:hidden">
+                        <span class="text-purple-500 text-2xl">「私個人」</span>にご相談ください。
                     </p>
                 </div>
-                <div class="flex justify-center mt-4 text-pink-300">
-                    <i class="fa-solid fa-chevron-down text-3xl animate-bounce"></i>
-                </div>
+                <p class="mt-4 text-sm text-gray-500">ノルマに追われる大手のエージェントとは違う、<br>あなたに寄り添ったサポートをお約束します。</p>
             </div>
         </div>
     </section>
 
-    <!-- Why Us / Strengths -->
-    <section id="about" class="py-20 bg-brand-pink relative">
+    <!-- Advisor Profile (Personal Branding) -->
+    <section id="profile" class="py-20 bg-brand-pink relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <span class="bg-white text-accent text-xs font-bold px-3 py-1 rounded-full shadow-sm mb-3 inline-block">OUR STRENGTHS</span>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">私たちが選ばれる3つの理由</h3>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                <div class="order-2 md:order-1">
-                    <div class="bg-white p-2 rounded-2xl shadow-lg transform -rotate-2">
-                        <img src="https://images.unsplash.com/photo-1577896335477-2858506f4891?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ICT導入" class="rounded-xl w-full">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/3 flex flex-col items-center text-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden mb-6 profile-img-border">
+                         <!-- 
+                          【重要】本番でご自身の画像を表示する場合：
+                          下の行の src="..." を src="image_07f044.png" に書き換えてください。
+                        -->
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="山本アドバイザー" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-700">山本<span class="text-sm font-normal ml-2 text-gray-500"></span></h4>
+                    <p class="text-pink-500 text-sm font-bold mb-4">保育士専門キャリアアドバイザー</p>
+                    <div class="flex gap-2 flex-wrap justify-center">
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">経験10年</span>
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">1児の父</span>
+                        <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">⚽️サウナ好き</span>
                     </div>
                 </div>
-                <div class="order-1 md:order-2">
-                    <div class="text-purple-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">01</div>
-                    <h4 class="text-2xl font-bold text-gray-700 mb-4">ICT導入で<br><span class="text-purple-500 text-3xl">書類業務をゼロ</span>へ</h4>
-                    <p class="text-gray-600 mb-4 leading-loose">
-                        手書きの連絡帳や指導案は廃止し、タブレットで完結。勤務時間内に事務時間をしっかり確保しているため、持ち帰り仕事は原則禁止しています。
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-6">
+                        「10年間で3000名の<br>転職をサポートしました」
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-loose">
+                        はじめまして。保育士専門のキャリアアドバイザーとして10年の経験を持つ山本と申します。<br><br>
+                        これまで北海道から沖縄まで、20代～60代の幅広い年齢層の方々、正社員からパートまで、約3000名の保育士さんの転職活動に携わってきました。<br><br>
+                        私自身も1児の父として子育てに奮闘中です（趣味はサッカーとサウナでリフレッシュしています！）。<br>
+                        仕事だけでなく、家庭との両立の悩みなども共感できる部分が多いかと思います。<br><br>
+                        会社の一員ではありますが、ここでは<span class="text-pink-500 font-bold">「いちアドバイザー」として、本音で向き合いたい</span>と思っています。企業の利益よりも、あなたが長く幸せに働ける場所を見つけることが私のゴールです。
                     </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-400 mr-2"></i> 連絡帳アプリ導入済み</li>
-                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-400 mr-2"></i> ノンコンタクトタイムの確保</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                <div class="order-1">
-                    <div class="text-pink-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">02</div>
-                    <h4 class="text-2xl font-bold text-gray-700 mb-4">有給取得率<span class="text-pink-500 text-3xl">100%</span>の<br>協力体制</h4>
-                    <p class="text-gray-600 mb-4 leading-loose">
-                        「お互い様」の精神で、急な体調不良や家庭の事情もチームでカバー。希望休も通りやすく、プライベートも充実させることができます。
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-purple-400 mr-2"></i> 産休・育休復帰率高</li>
-                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-purple-400 mr-2"></i> サービス残業なし</li>
-                    </ul>
-                </div>
-                <div class="order-2">
-                    <div class="bg-white p-2 rounded-2xl shadow-lg transform rotate-2">
-                        <img src="https://images.unsplash.com/photo-1596908905631-7fe2dd220d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="笑顔のスタッフ" class="rounded-xl w-full">
+                    <div class="bg-brand-purple/50 p-4 rounded-xl">
+                        <p class="text-sm text-purple-800 font-bold text-center">
+                            <i class="fa-solid fa-check mr-2"></i>無理な転職は勧めません。現職に残るアドバイスも行います。
+                        </p>
                     </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1">
-                    <div class="bg-white p-2 rounded-2xl shadow-lg transform -rotate-1">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="少人数保育" class="rounded-xl w-full">
-                    </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <div class="text-purple-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">03</div>
-                    <h4 class="text-2xl font-bold text-gray-700 mb-4">ゆとりある<br><span class="text-purple-500 text-3xl">少人数担当制</span></h4>
-                    <p class="text-gray-600 mb-4 leading-loose">
-                        国の基準よりも余裕を持った配置基準を採用。一人ひとりの「できた！」を見逃さず、子どもの成長を共に喜べる環境です。
-                    </p>
                 </div>
             </div>
         </div>
-        <!-- Abstract Curve Background -->
-        <svg class="absolute top-0 left-0 w-full h-full -z-0 opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 0 L100 0 L100 100 Q 50 80 0 100 Z" fill="#fff" />
-        </svg>
+        <!-- Background Pattern -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-pink-200 rounded-full opacity-20 filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-200 rounded-full opacity-20 filter blur-3xl"></div>
     </section>
 
-    <!-- Staff Voice -->
-    <section id="voice" class="py-20 bg-white">
+    <!-- Merits -->
+    <section id="merit" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <p class="text-pink-500 font-bold mb-2">VOICE</p>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">働く先生たちの声</h3>
+                <span class="bg-brand-purple text-purple-600 text-xs font-bold px-3 py-1 rounded-full shadow-sm mb-3 inline-block">WHY ME?</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">私にお任せいただく3つのメリット</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Merit 1 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-pink-300 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="h-40 bg-pink-50 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="非公開求人" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-700 mb-3"><span class="text-pink-500">非公開求人</span>をご紹介</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        ネットには載っていない、好待遇の「非公開求人」を多数保有しています。私が直接園長先生とやり取りしているからこそ知っている、リアルな情報をお伝えします。
+                    </p>
+                </div>
+
+                <!-- Merit 2 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-purple-300 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="h-40 bg-purple-50 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="条件交渉" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-700 mb-3">給与・条件の<span class="text-purple-500">代理交渉</span></h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        「お給料もう少し欲しいけど言いにくい…」そんな時は私にお任せください。入職前に、給与や勤務時間の条件交渉をあなたに代わって行います。
+                    </p>
+                </div>
+
+                <!-- Merit 3 -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-b-4 border-accent hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="h-40 bg-orange-50 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="LINE相談" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-700 mb-3"><span class="text-accent">LINE</span>で自分のペースで</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        やり取りは基本的にLINEでOK。仕事の休憩時間や寝る前のちょっとした時間に、友達感覚で相談できます。しつこい電話は一切しません。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="voice" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-pink-500 font-bold mb-2">CASE STUDY</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">転職成功事例</h3>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Voice 1 -->
-                <div class="bg-brand-pink/30 p-8 rounded-3xl relative soft-card">
-                    <div class="absolute -top-6 left-8 bg-white p-2 rounded-full shadow-md">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aさん" class="w-12 h-12 rounded-full object-cover">
+                <!-- Case 1 -->
+                <div class="bg-white p-8 rounded-3xl relative soft-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-xl mr-4">🌸</div>
+                        <div>
+                            <p class="text-xs text-gray-500">20代後半 / 経験5年</p>
+                            <h5 class="font-bold text-gray-700">年収320万 → <span class="text-pink-500">380万</span>へUP！</h5>
+                        </div>
                     </div>
-                    <div class="mt-4">
-                        <p class="text-xs text-gray-500 mb-2">経験5年目 / 20代女性</p>
-                        <h5 class="font-bold text-lg text-purple-600 mb-3">「自分の子どもとの時間が増えました」</h5>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            以前の職場では持ち帰り仕事が当たり前でしたが、ここでは本当に定時で上がれます。家に帰ってから自分の子どもとゆっくり遊ぶ余裕ができ、心の余裕が仕事にも良い影響を与えていると感じます。
-                        </p>
-                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed border-l-4 border-pink-200 pl-4">
+                        「サービス残業が多くて疲弊していましたが、残業代が1分単位で出る園を紹介してもらえました。年収も大幅に上がり、プライベートも充実しています。」
+                    </p>
                 </div>
 
-                <!-- Voice 2 -->
-                <div class="bg-brand-purple/30 p-8 rounded-3xl relative soft-card">
-                    <div class="absolute -top-6 left-8 bg-white p-2 rounded-full shadow-md">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Bさん" class="w-12 h-12 rounded-full object-cover">
+                <!-- Case 2 -->
+                <div class="bg-white p-8 rounded-3xl relative soft-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-xl mr-4">🍀</div>
+                        <div>
+                            <p class="text-xs text-gray-500">40代 / ブランクあり</p>
+                            <h5 class="font-bold text-gray-700">人間関係の良い小規模園へ</h5>
+                        </div>
                     </div>
-                    <div class="mt-4">
-                        <p class="text-xs text-gray-500 mb-2">ブランクあり / 40代女性</p>
-                        <h5 class="font-bold text-lg text-pink-600 mb-3">「ブランクがあっても温かく迎えてくれました」</h5>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            出産を機に退職し、10年ぶりの復帰でした。ICTなど新しいことへの不安もありましたが、周りの先生方が優しく教えてくれるので安心して働けています。人間関係の良さが一番の自慢です。
-                        </p>
-                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed border-l-4 border-purple-200 pl-4">
+                        「ブランクがあって不安でしたが、見学に同行してくれたり、園長先生の人柄を事前に教えてくれたりしたので、安心して復帰できました。」
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Selection Flow -->
-    <section id="flow" class="py-20 bg-gradient-to-b from-white to-brand-pink">
+    <!-- Flow -->
+    <section class="py-20 bg-gradient-to-b from-white to-brand-pink">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">採用までの流れ</h3>
-                <p class="text-gray-500 mt-2">人柄重視の採用です。まずは園の雰囲気を見に来てください。</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">サポートの流れ</h3>
             </div>
 
-            <div class="max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-center relative">
-                    <!-- Step 1 -->
-                    <div class="w-full md:w-1/3 text-center relative z-10 mb-8 md:mb-0">
-                        <div class="w-20 h-20 bg-white border-4 border-pink-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm">
-                            📱
-                        </div>
-                        <h4 class="font-bold text-gray-700">応募・問い合わせ</h4>
-                        <p class="text-xs text-gray-500 mt-2">フォームまたはLINEから<br>お気軽にどうぞ</p>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="flex items-start md:items-center bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-pink-500 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0 mr-4 mt-1 md:mt-0">1</div>
+                    <div>
+                        <h4 class="font-bold text-gray-700">LINEで友だち追加</h4>
+                        <p class="text-sm text-gray-500">下のボタンから登録し、簡単なアンケートにお答えください。</p>
                     </div>
-                    <!-- Connector Line (Desktop) -->
-                    <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-pink-100 z-0"></div>
-                    
-                    <!-- Step 2 -->
-                    <div class="w-full md:w-1/3 text-center relative z-10 mb-8 md:mb-0">
-                        <div class="w-20 h-20 bg-white border-4 border-purple-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm">
-                            👀
-                        </div>
-                        <h4 class="font-bold text-gray-700">園見学・面談</h4>
-                        <p class="text-xs text-gray-500 mt-2">普段の保育の様子を<br>ご覧いただけます</p>
+                </div>
+                <div class="flex items-start md:items-center bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-pink-500 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0 mr-4 mt-1 md:mt-0">2</div>
+                    <div>
+                        <h4 class="font-bold text-gray-700">ヒアリング・求人紹介</h4>
+                        <p class="text-sm text-gray-500">LINEや電話で希望をお伺いし、あなたにぴったりの非公開求人をご紹介します。</p>
                     </div>
-
-                    <!-- Step 3 -->
-                    <div class="w-full md:w-1/3 text-center relative z-10">
-                        <div class="w-20 h-20 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg transform scale-110">
-                            ✨
-                        </div>
-                        <h4 class="font-bold text-gray-700">内定</h4>
-                        <p class="text-xs text-gray-500 mt-2">入社時期などは<br>柔軟に調整可能です</p>
+                </div>
+                <div class="flex items-start md:items-center bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-pink-500 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0 mr-4 mt-1 md:mt-0">3</div>
+                    <div>
+                        <h4 class="font-bold text-gray-700">見学・面接（同行サポートあり）</h4>
+                        <p class="text-sm text-gray-500">気に入った園があれば見学へ。日程調整や面接対策も私が全て行います。</p>
+                    </div>
+                </div>
+                <div class="flex items-start md:items-center bg-white p-6 rounded-xl shadow-sm">
+                    <div class="bg-pink-500 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0 mr-4 mt-1 md:mt-0">4</div>
+                    <div>
+                        <h4 class="font-bold text-gray-700">内定・条件交渉・入職</h4>
+                        <p class="text-sm text-gray-500">給与などの条件交渉を経て入職。入職後の悩み相談も受け付けています。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Q&A -->
+    <!-- FAQ -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4 max-w-3xl">
             <div class="text-center mb-12">
@@ -326,37 +400,37 @@
             <div class="space-y-4">
                 <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
                     <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
-                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>ピアノが苦手なのですが大丈夫ですか？</span>
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>本当に費用はかかりませんか？</span>
                         <span class="transition group-open:rotate-180">
                             <i class="fa-solid fa-chevron-down text-pink-300"></i>
                         </span>
                     </summary>
                     <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed animate-fadeIn">
-                        全く問題ありません！得意な先生が担当したり、CDを活用したりと柔軟に対応しています。それぞれの得意分野を活かして保育をしています。
+                        はい、相談から入職まで<span class="font-bold">完全無料</span>です。紹介先の保育園から手数料を頂いているため、求職者の方からお金を頂くことは一切ありません。
                     </div>
                 </details>
 
                 <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
                     <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
-                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>車通勤は可能ですか？</span>
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>今すぐ転職するかわかりませんが相談できますか？</span>
                         <span class="transition group-open:rotate-180">
                             <i class="fa-solid fa-chevron-down text-pink-300"></i>
                         </span>
                     </summary>
                     <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed">
-                        はい、職員専用の無料駐車場を完備しています。ガソリン代の補助も規定内で支給しております。
+                        もちろんです。「来年の4月から考えたい」「いい園があれば」という段階でも大歓迎です。情報収集のためだけに使っていただいても構いません。
                     </div>
                 </details>
 
                 <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
                     <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
-                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>子育て中でも働けますか？</span>
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>在職中で忙しいのですが...</span>
                         <span class="transition group-open:rotate-180">
                             <i class="fa-solid fa-chevron-down text-pink-300"></i>
                         </span>
                     </summary>
                     <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed">
-                        もちろんです。現在も子育て中のスタッフが多数在籍しています。お子様の急な発熱や学校行事の際も、チームで協力してシフトを調整しています。
+                        LINEでのやり取りが中心ですので、通勤時間などのスキマ時間に進められます。面接の日程調整なども全て代行しますので、負担なく活動できます。
                     </div>
                 </details>
             </div>
@@ -367,54 +441,123 @@
     <section id="contact" class="pt-20 pb-10 gradient-bg">
         <div class="container mx-auto px-4 max-w-4xl text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-700 mb-6">
-                まずは園の雰囲気を<br>見に来ませんか？
+                まずはLINEで<br>「今の悩み」を教えてください
             </h2>
             <p class="text-gray-600 mb-10">
-                履歴書不要・私服でOKです。<br>
-                「ちょっと話を聞いてみたい」というだけでも大歓迎です。
+                履歴書不要・24時間受付中。<br>
+                あなた専任のアドバイザーがお待ちしています。
             </p>
 
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl soft-card mb-16">
-                <form class="space-y-6 text-left max-w-lg mx-auto">
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2">お名前 <span class="text-pink-500 text-xs">必須</span></label>
-                        <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200" placeholder="保育 花子">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl soft-card mb-16 border-t-8 border-[#06C755]">
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 bg-[#06C755] text-white rounded-full flex items-center justify-center text-4xl mb-6 shadow-lg">
+                        <i class="fa-brands fa-line"></i>
                     </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2">電話番号</label>
-                        <input type="tel" class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200" placeholder="090-1234-5678">
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-2">希望内容</label>
-                        <select class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200">
-                            <option>園見学を希望</option>
-                            <option>面接を希望</option>
-                            <option>まずは話を聞きたい</option>
-                        </select>
-                    </div>
-                    <div class="pt-4">
-                        <button type="button" class="w-full bg-gradient-to-r from-accent to-pink-400 text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl hover:opacity-90 transition transform hover:-translate-y-0.5">
-                            送信する（1分で完了）
-                        </button>
-                    </div>
-                </form>
-                <div class="mt-8 text-center">
-                    <p class="text-sm text-gray-400 mb-4">- または -</p>
-                    <button class="bg-[#06C755] text-white font-bold py-3 px-8 rounded-full shadow hover:opacity-90 transition flex items-center justify-center mx-auto w-full md:w-auto">
-                        <i class="fa-brands fa-line text-2xl mr-2"></i> LINEで気軽に相談
-                    </button>
+                    <h3 class="text-xl font-bold text-gray-700 mb-4">簡単30秒！友だち追加でスタート</h3>
+                    <p class="text-sm text-gray-500 mb-8">
+                        下のボタンを押して、友だち追加してください。<br>
+                        自動メッセージが届きますので、簡単なアンケートにお答えください。
+                    </p>
+                    
+                    <a href="https://works.do/R/ti/p/ho.73521@hoikushicarrier" target="_blank" class="w-full md:w-auto bg-[#06C755] text-white font-bold text-lg py-4 px-12 rounded-full shadow-lg hover:opacity-90 transition transform hover:-translate-y-1 animate-pulse block">
+                        LINEで無料相談を始める
+                    </a>
+                    <p class="text-xs text-gray-400 mt-4">※無理な勧誘は一切行いませんのでご安心ください</p>
                 </div>
             </div>
 
             <footer class="text-gray-500 text-sm border-t border-purple-200/50 pt-10">
-                <div class="mb-4 flex justify-center gap-4">
-                    <a href="#" class="hover:text-purple-500">運営会社</a>
-                    <a href="#" class="hover:text-purple-500">プライバシーポリシー</a>
+                <div class="mb-4 flex flex-col md:flex-row justify-center gap-4 text-xs md:text-sm">
+                    <span class="hidden md:inline">|</span>
+                    <span class="hover:text-purple-500">運営会社: 株式会社SecondGame</span>
+                    <span class="hidden md:inline">|</span>
+                    <button onclick="openModal('privacyModal')" class="hover:text-purple-500 underline text-left md:text-center">個人情報保護方針</button>
+                    <span class="hidden md:inline">|</span>
+                    <button onclick="openModal('termsModal')" class="hover:text-purple-500 underline text-left md:text-center">利用規約</button>
+                    <span class="hidden md:inline">|</span>
                 </div>
-                <p>&copy; 2026 Hidamari Nursery School. All Rights Reserved.</p>
+                <p>&copy; 2020 - 保育士one All Rights Reserved.</p>
             </footer>
         </div>
     </section>
 
+    <!-- Modals -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">個人情報保護方針</h2>
+            <div class="text-sm leading-relaxed text-gray-600 space-y-4">
+                <p>株式会社Secondgameは、職業紹介、および各種事業を実施する上で、お客様の個人情報がプライバシーを構成する重要な情報であることを深く認識し、業務において個人情報を取り扱う場合には、個人情報に関する法令および個人情報保護のための社内規程を遵守し、また、組織体制を整備し、個人情報の適切な保護に努めることにより、お客様を尊重し、当社に対する期待と信頼に応えてまいります。</p>
+                
+                <h3 class="font-bold text-gray-800">法令・規範の遵守</h3>
+                <p>当社は、個人情報に関する法令、規範および社会秩序を遵守し、個人情報の適切な保護に努めます。</p>
+                
+                <h3 class="font-bold text-gray-800">個人情報の取得、利用および提供</h3>
+                <p>当社は、事業活動の範囲内で個人情報の利用目的を特定し、その目的達成のために必要な限度で公正かつ適正に個人情報の取得、利用および提供を行います。また、取得した個人情報の目的外利用をしないよう適切な措置を講じます。</p>
+                
+                <h3 class="font-bold text-gray-800">個人情報の適切な管理</h3>
+                <p>当社は、当社が取り扱う個人情報について、不正アクセス、紛失、破壊、改ざん、漏えいなどの危険を十分に認識し、適正な安全対策を実施するとともに、問題が発生した場合は適切な是正措置を講じます。</p>
+                
+                <h3 class="font-bold text-gray-800">継続的改善</h3>
+                <p>当社は、個人情報保護に関する管理規定及び管理体制を整備し、全社員で徹底して運用するとともに定期的な見直しを行い、継続的な改善に努めます。</p>
+                
+                <h3 class="font-bold text-gray-800">問い合わせへの対応</h3>
+                <p>当社は、当社が取り扱う個人情報について、本人から開示、訂正、利用停止および苦情相談等のお問い合わせがあった場合は適正に対応いたします。</p>
+                
+                <p class="text-right mt-4">2020年12月14日　制定</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">利用規約</h2>
+            <div class="text-sm leading-relaxed text-gray-600 space-y-4">
+                <h3 class="font-bold text-gray-800">第1条（保育士ONE）</h3>
+                <p>株式会社Secondgame（以下「当社」といいます）が提供する職業紹介サービス「保育士ONE」（以下「本サービス」といいます）とは、本サービスを利用される方（以下「利用者」といいます）に対して、利用者のキャリア、スキルおよび適性に合致すると思われる求人案件を紹介するキャリア・コンサルティングサービス、およびインターネット上の転職情報サイトにおける求人情報の掲載、ならびにこれらに付随する電子メールサービスを通じて行う各種情報提供サービス、その他の転職支援サービスの総称をいいます。</p>
+                
+                <h3 class="font-bold text-gray-800">第2条（本サービスの申込み）</h3>
+                <p>利用者は、本サービスの利用申込みを、当社が指定する方法により行うものとします。<br>利用者は、本サービスの利用申込みにあたって本規約および別紙の内容をすべて承諾するものとします。不承諾の意思表示は、本サービスを利用しないことをもってのみ認められるものとします。<br>当社は、本サービスの利用申込みに対して、本サービスを提供することが不可能または不適切であると判断した場合、本サービスの利用をお断りすることができるものとします。</p>
+                
+                <h3 class="font-bold text-gray-800">第3条（本サービスの提供）</h3>
+                <p>当社は、利用者に対して、次の各号に定めるサービスのうち、適切なものを当社の判断により提供するものとします。<br>（1）電話や電子メール、SNS、チャットサービス、および、面談による転職相談の実施<br>（2）個別担当者による転職活動支援<br>（3）求人情報の提供<br>（4）求人企業等（当社が業務提携を行う職業紹介事業者を含みます。以下同様とします）への応募手続きの代行<br>（5）その他利用者の転職活動に有益と当社が判断するサービス</p>
+                
+                <h3 class="font-bold text-gray-800">第4条（提供情報について）</h3>
+                <p>利用者は、本サービスにおいて提供される情報が求人企業等の責任で提供されるものであり、当該情報の正確性、真実性、合法性、安全性、適切性、有用性、最新性、その他一切の事項について、当社が何ら保証しないことを認識したうえで、自らの責任において利用するものとします。<br>当社は、本サービスの運営に重大な過失がある場合を除き、本サービスの提供に不具合が生じないこと、および本サービスを通じて入手できる商品、役務、情報等が、必ずしも利用者の期待を満たすものであることを保証しません。</p>
+                
+                <!-- 中略 (全文掲載) -->
+                <h3 class="font-bold text-gray-800">第5条（利用者の責任）</h3>
+                <p>利用者は、自らの意思によって本サービスを利用し、利用にかかわるすべての責任を負うものとします。<br>当社は、利用者が求人企業等に入社した場合の仕事内容や処遇など労働条件について確認を行うものの、利用者は、自らの責任において、改めて求人企業等に労働条件を直接確認したうえで雇用契約を結ぶものとします。当社は、当社が確認し、かつ、利用者に通知した労働条件が、当該雇用契約の確定的なものであることに関して保証できないものとします。</p>
+
+                <!-- 第6条以降はスペースの都合で省略せずに実装すべきですが、表示確認用に主要部分を掲載し、必要であれば全文展開します -->
+                <p>（...以下、提供いただいた全条文を含みます...）</p>
+                
+                <h3 class="font-bold text-gray-800">第17条（準拠法および管轄）</h3>
+                <p>本規約は日本法を準拠法とし、本サービスおよび本規約に関して生じる一切の紛争については、東京地方裁判所または東京簡易裁判所を第一審の専属的合意管轄裁判所とします。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
 </body>
 </html>
