@@ -3,32 +3,674 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>保育士の転職相談｜LINEで求人が届く</title>
-  <meta name="description" content="勤務時間と月給のバランスが取れる求人をLINEでご案内。しつこい電話なし／相談無料／見るだけOK。">
+  <title>残業・持ち帰りがつらい保育士さんへ｜時間固定OK求人をLINEで提案</title>
+  <meta name="description" content="残業/持ち帰りを減らしたい、時間固定で働きたい保育士さんへ。希望条件をLINEで送るだけで、合う求人だけ提案。しつこい電話なし・相談無料・見るだけOK。" />
+
+  <!-- OGP（SNSでシェアされた時の見え方） -->
+  <meta property="og:title" content="時間固定OKの求人、LINEでまとめて提案" />
+  <meta property="og:description" content="残業/持ち帰りを減らしたい保育士さんへ。希望条件をLINEで送るだけ。" />
+  <meta property="og:type" content="website" />
+  <!-- og:image は後で差し替え推奨（今はプレースホルダ） -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1526634332515-d56c6b7e3b82?auto=format&fit=crop&w=1200&q=80" />
+
   <style>
-    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;margin:0;line-height:1.7;color:#111}
-    .wrap{max-width:820px;margin:0 auto;padding:24px}
-    .btn{display:inline-block;padding:14px 18px;background:#111;color:#fff;border-radius:10px;text-decoration:none;font-weight:700}
-    .card{border:1px solid #e6e6e6;border-radius:14px;padding:16px;margin:12px 0}
-    .note{font-size:12px;color:#555}
+    :root{
+      --bg: #0b1020;
+      --surface: rgba(255,255,255,.08);
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --line: rgba(255,255,255,.16);
+
+      --accent: #7c3aed;      /* 紫 */
+      --accent2:#22c55e;      /* 緑 */
+      --accent3:#60a5fa;      /* 青 */
+      --warn:#fbbf24;
+
+      --radius: 18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --shadow2: 0 10px 24px rgba(0,0,0,.22);
+
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(1000px 600px at 85% 10%, rgba(96,165,250,.25), transparent 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(34,197,94,.18), transparent 60%),
+        linear-gradient(180deg, #070a14, #0b1020 40%, #070a14);
+      color: var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(10,14,28,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background:
+        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.0)),
+        linear-gradient(135deg, rgba(124,58,237,.95), rgba(96,165,250,.9));
+      box-shadow: 0 8px 18px rgba(124,58,237,.25);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+      white-space:nowrap;
+    }
+    .pill b{color:var(--text)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration:none;
+      font-weight:800;
+      letter-spacing:.1px;
+      transition: transform .12s ease, filter .12s ease;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      box-shadow: var(--shadow2);
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); filter: brightness(1.06)}
+    .btn:active{transform: translateY(0px); filter: brightness(1.0)}
+    .btn-primary{
+      border: none;
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.85));
+      color: #07140c;
+      box-shadow: 0 14px 34px rgba(34,197,94,.18);
+    }
+    .btn-secondary{
+      background: rgba(255,255,255,.06);
+    }
+    .btn-small{
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      box-shadow:none;
+    }
+
+    .hero{
+      padding: 46px 0 18px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-card{
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-left{padding: 26px 22px}
+    .headline{
+      font-size: clamp(24px, 2.6vw, 38px);
+      line-height: 1.25;
+      margin: 10px 0 10px;
+      letter-spacing: .2px;
+    }
+    .sub{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 46em;
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin: 12px 0 18px}
+    .badges .pill{background: rgba(255,255,255,.05)}
+    .checks{
+      display:grid;
+      gap: 10px;
+      margin: 16px 0 18px;
+    }
+    .check{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .check i{
+      width:22px; height:22px; border-radius: 8px;
+      background: rgba(34,197,94,.20);
+      border:1px solid rgba(34,197,94,.35);
+      display:inline-flex; align-items:center; justify-content:center;
+      font-style: normal;
+      color: rgba(34,197,94,.95);
+      font-weight:900;
+      flex: 0 0 auto;
+      margin-top:2px;
+    }
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 12px}
+    .mini-note{font-size:12px; color: var(--muted); margin-top: 8px}
+
+    .hero-right{
+      display:grid;
+      grid-template-rows: auto 1fr;
+      gap: 12px;
+      padding: 14px;
+    }
+    .imageBox{
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      min-height: 220px;
+      position:relative;
+    }
+    .imageBox img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.02);
+    }
+    .imageOverlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.55));
+    }
+    .imageCaption{
+      position:absolute; left:12px; right:12px; bottom:12px;
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(10,14,28,.55);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+      color: var(--text);
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .stat{
+      padding: 12px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .stat b{display:block; font-size: 14px}
+    .stat span{display:block; font-size: 12px; color: var(--muted); margin-top:2px}
+
+    .section{padding: 22px 0}
+    .section h2{
+      font-size: 20px;
+      margin: 0 0 10px;
+      letter-spacing:.2px;
+    }
+    .section p{margin: 0 0 10px; color: var(--muted)}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px}
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px}
+
+    .card{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 16px 14px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.10);
+    }
+    .card h3{margin: 0 0 8px; font-size: 16px}
+    .card .muted{color: var(--muted); font-size: 13px}
+    .icon{
+      width:36px; height:36px; border-radius: 14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      margin-bottom: 8px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .icon.green{background: rgba(34,197,94,.15); border-color: rgba(34,197,94,.25)}
+    .icon.purple{background: rgba(124,58,237,.16); border-color: rgba(124,58,237,.28)}
+    .icon.blue{background: rgba(96,165,250,.16); border-color: rgba(96,165,250,.28)}
+    .icon span{font-weight:900}
+
+    .job{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .job::before{
+      content:"";
+      position:absolute; inset:-2px -2px auto -2px;
+      height: 5px;
+      background: linear-gradient(90deg, rgba(34,197,94,.75), rgba(96,165,250,.65), rgba(124,58,237,.65));
+      opacity:.85;
+    }
+    .job h3{margin: 6px 0 6px; font-size: 15px}
+    .job .tagRow{display:flex; flex-wrap:wrap; gap:6px; margin-top: 8px}
+    .tag{
+      font-size: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .tag strong{color: var(--text)}
+    .job .meta{font-size: 13px; color: var(--muted)}
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 12px 0;
+    }
+
+    .steps{display:grid; gap: 10px}
+    .step{
+      display:flex; gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .step .num{
+      width:34px; height:34px; border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 900;
+      background: rgba(96,165,250,.15);
+      border: 1px solid rgba(96,165,250,.25);
+      flex: 0 0 auto;
+    }
+    .step b{display:block}
+    .faq details{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+    .faq details + details{margin-top:10px}
+    .faq summary{
+      cursor:pointer;
+      font-weight: 800;
+      list-style:none;
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .answer{margin-top:8px; color: var(--muted); font-size: 14px}
+
+    .finalCta{
+      margin: 18px 0 28px;
+      border-radius: calc(var(--radius) + 4px);
+      background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(96,165,250,.14), rgba(34,197,94,.14));
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 18px 14px;
+      box-shadow: var(--shadow);
+    }
+    .finalCta h2{margin:0 0 6px}
+    .finalCta p{margin:0 0 10px; color: var(--muted)}
+    .footer{
+      padding: 24px 0 40px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer a{color: rgba(255,255,255,.70)}
+
+    /* 右下固定のCTA（スマホ強い） */
+    .floating{
+      position: fixed;
+      right: 16px; bottom: 16px;
+      z-index: 80;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .floating .btn{padding: 12px 14px; border-radius: 16px}
+    .floating .btn-primary{box-shadow: 0 18px 38px rgba(34,197,94,.20)}
+    .floating .hint{
+      font-size: 11px;
+      color: rgba(255,255,255,.75);
+      background: rgba(10,14,28,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 8px 10px;
+      backdrop-filter: blur(10px);
+      max-width: 240px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr}
+      .stats{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .grid3{grid-template-columns: 1fr}
+      .grid2{grid-template-columns: 1fr}
+      .stats{grid-template-columns: 1fr 1fr}
+      .topbar-inner{padding: 10px 0}
+      .floating{left: 16px; right: 16px}
+      .floating .btn{width:100%}
+      .floating .hint{max-width:none}
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <h1>勤務時間と月給のバランスが取れる求人、LINEでまとめて見れます。</h1>
-    <p>「まずは求人だけ見たい」「電話は苦手」でもOK。希望条件に合う求人だけをご案内します。</p>
+  <!-- ===============================
+       設定（ここだけ最初に直す）
+       =============================== -->
+  <script>
+    // ★ここをあなたのLINEリンクに変更（今のURLを入れてあります）
+    const LINE_URL = "https://works.do/R/ti/p/ho.73521@hoikushicarrier";
+  </script>
 
-    <div class="card">✅ しつこい電話なし（LINE中心にできます）</div>
-    <div class="card">✅ 相談・求人紹介は完全無料</div>
-    <div class="card">✅ “見るだけ”OK（合わなければスルーでOK）</div>
-
-    <p>
-      <a class="btn" href="https://works.do/R/ti/p/ho.73521@hoikushicarrier">LINEで求人を受け取る（30秒）</a>
-    </p>
-    <p class="note">※登録後に無理な勧誘はしません。希望条件に合う求人のみご案内します。</p>
-
-    <hr>
-    <p class="note">運営者情報／プライバシーポリシー／利用規約（リンク）</p>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px">保育士の転職相談</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.65)">LINEで求人提案（時間固定OK）</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end">
+        <span class="pill">✅ <b>しつこい電話なし</b></span>
+        <a class="btn btn-primary btn-small" id="topCta" href="#">LINEで求人を受け取る</a>
+      </div>
+    </div>
   </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <section class="hero-card hero-left">
+          <div class="badges">
+            <span class="pill">無料相談</span>
+            <span class="pill">LINE中心OK</span>
+            <span class="pill">見るだけOK</span>
+            <span class="pill">現職バレ配慮</span>
+          </div>
+
+          <h1 class="headline">
+            残業・持ち帰りがつらい保育士さんへ。<br>
+            <span style="color:rgba(34,197,94,.95)">時間固定OK</span>の求人、<span style="color:rgba(96,165,250,.95)">LINE</span>でまとめて提案します。
+          </h1>
+
+          <p class="sub">
+            希望条件を送るだけで、合う求人だけ届きます。<br>
+            「まずは求人だけ見たい」「電話は苦手」でも大丈夫です。
+          </p>
+
+          <div class="checks">
+            <div class="check"><i>✓</i><div><b>しつこい電話なし</b><div class="muted">連絡はLINE中心にできます</div></div></div>
+            <div class="check"><i>✓</i><div><b>相談・求人提案は完全無料</b><div class="muted">費用は一切かかりません</div></div></div>
+            <div class="check"><i>✓</i><div><b>見るだけOK</b><div class="muted">合わなければスルーでOK</div></div></div>
+          </div>
+
+          <div class="ctaRow">
+            <a class="btn btn-primary" id="heroCta" href="#">LINEで求人を受け取る（30秒）</a>
+            <a class="btn btn-secondary" href="#jobs">どんな求人が届く？</a>
+          </div>
+
+          <div class="mini-note">
+            ※登録後に無理な勧誘はしません。希望条件に合う求人のみご案内します。
+          </div>
+        </section>
+
+        <aside class="hero-card hero-right">
+          <div class="imageBox" aria-label="保育のイメージ画像">
+            <img
+              src="https://images.unsplash.com/photo-1526634332515-d56c6b7e3b82?auto=format&fit=crop&w=1200&q=80"
+              alt="保育の現場をイメージした写真">
+            <div class="imageOverlay" aria-hidden="true"></div>
+            <div class="imageCaption">
+              「条件が合う園」だけ、短時間で提案。<br>
+              <span style="color:rgba(34,197,94,.95); font-weight:800">時間固定 / 残業少なめ / 雰囲気重視</span>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <b>提案の基準</b>
+              <span>希望条件から逆算して厳選</span>
+            </div>
+            <div class="stat">
+              <b>やり取り</b>
+              <span>LINE中心でOK</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <h2>こんな悩み、ありませんか？</h2>
+        <p>このLPは “時間固定・残業を減らしたい” 人向けに作っています。</p>
+
+        <div class="grid3">
+          <div class="card">
+            <div class="icon purple"><span>⏱</span></div>
+            <h3>時間が読めない</h3>
+            <div class="muted">シフトがきつい／延長で帰れない</div>
+          </div>
+          <div class="card">
+            <div class="icon blue"><span>📄</span></div>
+            <h3>持ち帰りが常態化</h3>
+            <div class="muted">書類・制作・行事準備が終わらない</div>
+          </div>
+          <div class="card">
+            <div class="icon green"><span>🧠</span></div>
+            <h3>園の雰囲気が不安</h3>
+            <div class="muted">人間関係／離職率／残業実態が見えない</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>私たちの約束</h3>
+            <div class="muted">
+              希望に合わない求人を“数打ち”で送るのではなく、<b>合う求人だけ</b>を提案します。<br>
+              忙しい人ほど、短時間で判断できるように整理してお届けします。
+            </div>
+          </div>
+          <div class="card">
+            <h3>選ばれる理由（ここが差になります）</h3>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li><b>時間固定・残業少なめ</b>の条件から逆算して候補を厳選</li>
+              <li>希望があれば<b>条件交渉</b>（給与/勤務時間/配属など）も代行</li>
+              <li><b>園の雰囲気</b>や働き方（残業実態など）を確認しながら提案</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="jobs">
+      <div class="wrap">
+        <h2>例えば、こんな求人が届きます（サンプル）</h2>
+        <p>※ここは後で実態に合わせて調整してください（誇張は避けるのが安全）。</p>
+
+        <div class="grid3">
+          <div class="job">
+            <h3>時間固定 9:00〜18:00｜認可保育園</h3>
+            <div class="meta">月給：25万円〜 / 年休：120日〜 / 残業：月5h以内目安</div>
+            <div class="tagRow">
+              <span class="tag"><strong>時間固定</strong></span>
+              <span class="tag">持ち帰り削減</span>
+              <span class="tag">ICT活用</span>
+            </div>
+          </div>
+
+          <div class="job">
+            <h3>土日休み多め｜行事負担少なめ</h3>
+            <div class="meta">月給：24万円〜 / 年休：125日〜 / 書類：フォーマット整備</div>
+            <div class="tagRow">
+              <span class="tag"><strong>行事少なめ</strong></span>
+              <span class="tag">書類簡略化</span>
+              <span class="tag">人員配置厚め</span>
+            </div>
+          </div>
+
+          <div class="job">
+            <h3>駅近｜人間関係の不安が少ない園を優先提案</h3>
+            <div class="meta">月給：23.5万円〜 / 残業：少なめ / 職員定着率重視</div>
+            <div class="tagRow">
+              <span class="tag"><strong>雰囲気重視</strong></span>
+              <span class="tag">定着率</span>
+              <span class="tag">面接対策付き</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="finalCta" style="margin-top:14px">
+          <h2>あなたの希望条件で、合う求人だけ受け取る</h2>
+          <p>LINEで「希望条件」を送るだけ。求人は整理してお送りします。</p>
+          <div class="ctaRow">
+            <a class="btn btn-primary" id="midCta" href="#">LINEで求人を受け取る（30秒）</a>
+            <a class="btn btn-secondary" href="#flow">流れを見る</a>
+          </div>
+          <div class="mini-note">※やり取りはLINE中心OK。電話が必要な時も事前に確認します。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="flow">
+      <div class="wrap">
+        <h2>ご利用の流れ（最短3ステップ）</h2>
+        <p>「登録したら何をされるの？」を見える化して、不安を減らします。</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>LINEを追加（30秒）</b>
+              <div class="muted">まずは友だち追加だけでOK。</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>希望条件を送る（テンプレでOK）</b>
+              <div class="muted">例：エリア／雇用形態／時間固定／給与／園の雰囲気など</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>合う求人だけ届く → 気になるものだけ返信</b>
+              <div class="muted">応募は、あなたの許可をもらってから進めます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2" style="margin-top:12px">
+          <div class="card">
+            <h3>追加直後に送ると良い一言（コピペ用）</h3>
+            <div class="muted">
+              「希望：エリア◯◯、雇用形態◯◯、時間固定（例9-18）、給与◯◯以上、残業少なめ、園の雰囲気重視。まずは求人だけ見たいです」
+            </div>
+          </div>
+          <div class="card">
+            <h3>（後で強化するとさらにCVが伸びる）</h3>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li>LINEの自動応答（希望条件ボタン）</li>
+              <li>エリア別LP（例：tokyo.html など）</li>
+              <li>計測（GA4 / 広告 / UTM）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>よくある質問</h2>
+        <div class="faq">
+          <details>
+            <summary>Q. 本当に無料ですか？</summary>
+            <div class="answer">A. はい。求職者の方から費用は一切いただきません。</div>
+          </details>
+          <details>
+            <summary>Q. 電話が苦手です…LINEだけで進められますか？</summary>
+            <div class="answer">A. 可能です。基本はLINE中心で進め、必要な場合も事前に確認します。</div>
+          </details>
+          <details>
+            <summary>Q. まだ転職するか迷っています。</summary>
+            <div class="answer">A. 迷っていてOKです。情報収集・求人を見るだけでも大丈夫です。</div>
+          </details>
+          <details>
+            <summary>Q. 今の職場にバレませんか？</summary>
+            <div class="answer">A. ご本人の許可なく現職へ連絡することはありません。</div>
+          </details>
+          <details>
+            <summary>Q. どんな希望を伝えればいいですか？</summary>
+            <div class="answer">A. エリア／雇用形態／勤務時間（固定希望など）／給与／休日／園の雰囲気（人間関係）を送るとスムーズです。</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="finalCta">
+          <h2>時間固定OKの求人、まずは“見るだけ”でもOK</h2>
+          <p>希望条件を送るだけで、合う求人だけ届きます。</p>
+          <div class="ctaRow">
+            <a class="btn btn-primary" id="bottomCta" href="#">LINEで求人を受け取る（30秒）</a>
+            <a class="btn btn-secondary" href="#top">上に戻る</a>
+          </div>
+          <div class="mini-note">
+            ※利用規約・プライバシーポリシー等は後ほど追加でOK（今は集客用の骨格を優先）。
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>運営者情報／プライバシーポリシー／利用規約（リンク） ※あとで差し替え</div>
+          <div style="margin-top:6px">© Your Company</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating" aria-hidden="false">
+    <div class="hint">👆「まずは求人だけ見たい」でもOK。LINEで希望条件を送るだけ。</div>
+    <a class="btn btn-primary" id="floatCta" href="#">LINEで求人を受け取る</a>
+  </div>
+
+  <script>
+    // CTAにLINEリンクを一括反映
+    const ids = ["topCta","heroCta","midCta","bottomCta","floatCta"];
+    ids.forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.href = LINE_URL;
+    });
+  </script>
 </body>
 </html>
