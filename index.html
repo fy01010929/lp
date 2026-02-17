@@ -1,676 +1,420 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>残業・持ち帰りがつらい保育士さんへ｜時間固定OK求人をLINEで提案</title>
-  <meta name="description" content="残業/持ち帰りを減らしたい、時間固定で働きたい保育士さんへ。希望条件をLINEで送るだけで、合う求人だけ提案。しつこい電話なし・相談無料・見るだけOK。" />
-
-  <!-- OGP（SNSでシェアされた時の見え方） -->
-  <meta property="og:title" content="時間固定OKの求人、LINEでまとめて提案" />
-  <meta property="og:description" content="残業/持ち帰りを減らしたい保育士さんへ。希望条件をLINEで送るだけ。" />
-  <meta property="og:type" content="website" />
-  <!-- og:image は後で差し替え推奨（今はプレースホルダ） -->
-  <meta property="og:image" content="https://images.unsplash.com/photo-1526634332515-d56c6b7e3b82?auto=format&fit=crop&w=1200&q=80" />
-
-  <style>
-    :root{
-      --bg: #0b1020;
-      --surface: rgba(255,255,255,.08);
-      --card: rgba(255,255,255,.10);
-      --card2: rgba(255,255,255,.06);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --line: rgba(255,255,255,.16);
-
-      --accent: #7c3aed;      /* 紫 */
-      --accent2:#22c55e;      /* 緑 */
-      --accent3:#60a5fa;      /* 青 */
-      --warn:#fbbf24;
-
-      --radius: 18px;
-      --shadow: 0 12px 40px rgba(0,0,0,.35);
-      --shadow2: 0 10px 24px rgba(0,0,0,.22);
-
-      --max: 1100px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      background:
-        radial-gradient(1200px 800px at 15% 10%, rgba(124,58,237,.35), transparent 60%),
-        radial-gradient(1000px 600px at 85% 10%, rgba(96,165,250,.25), transparent 55%),
-        radial-gradient(900px 700px at 50% 90%, rgba(34,197,94,.18), transparent 60%),
-        linear-gradient(180deg, #070a14, #0b1020 40%, #070a14);
-      color: var(--text);
-      line-height:1.7;
-      overflow-x:hidden;
-    }
-
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 0 20px}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(10,14,28,.55);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 12px 0;
-      gap:12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.2px;
-    }
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background:
-        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.0)),
-        linear-gradient(135deg, rgba(124,58,237,.95), rgba(96,165,250,.9));
-      box-shadow: 0 8px 18px rgba(124,58,237,.25);
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border:1px solid rgba(255,255,255,.14);
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      font-size: 12px;
-      white-space:nowrap;
-    }
-    .pill b{color:var(--text)}
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      text-decoration:none;
-      font-weight:800;
-      letter-spacing:.1px;
-      transition: transform .12s ease, filter .12s ease;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
-      box-shadow: var(--shadow2);
-      white-space:nowrap;
-    }
-    .btn:hover{transform: translateY(-1px); filter: brightness(1.06)}
-    .btn:active{transform: translateY(0px); filter: brightness(1.0)}
-    .btn-primary{
-      border: none;
-      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(16,185,129,.85));
-      color: #07140c;
-      box-shadow: 0 14px 34px rgba(34,197,94,.18);
-    }
-    .btn-secondary{
-      background: rgba(255,255,255,.06);
-    }
-    .btn-small{
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      box-shadow:none;
-    }
-
-    .hero{
-      padding: 46px 0 18px;
-      position:relative;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .hero-card{
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.06);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-left{padding: 26px 22px}
-    .headline{
-      font-size: clamp(24px, 2.6vw, 38px);
-      line-height: 1.25;
-      margin: 10px 0 10px;
-      letter-spacing: .2px;
-    }
-    .sub{
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 46em;
-    }
-    .badges{display:flex; flex-wrap:wrap; gap:8px; margin: 12px 0 18px}
-    .badges .pill{background: rgba(255,255,255,.05)}
-    .checks{
-      display:grid;
-      gap: 10px;
-      margin: 16px 0 18px;
-    }
-    .check{
-      display:flex; gap:10px; align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .check i{
-      width:22px; height:22px; border-radius: 8px;
-      background: rgba(34,197,94,.20);
-      border:1px solid rgba(34,197,94,.35);
-      display:inline-flex; align-items:center; justify-content:center;
-      font-style: normal;
-      color: rgba(34,197,94,.95);
-      font-weight:900;
-      flex: 0 0 auto;
-      margin-top:2px;
-    }
-    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 12px}
-    .mini-note{font-size:12px; color: var(--muted); margin-top: 8px}
-
-    .hero-right{
-      display:grid;
-      grid-template-rows: auto 1fr;
-      gap: 12px;
-      padding: 14px;
-    }
-    .imageBox{
-      border-radius: 16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      min-height: 220px;
-      position:relative;
-    }
-    .imageBox img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.02);
-    }
-    .imageOverlay{
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.55));
-    }
-    .imageCaption{
-      position:absolute; left:12px; right:12px; bottom:12px;
-      padding: 10px 10px;
-      border-radius: 14px;
-      background: rgba(10,14,28,.55);
-      border: 1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
-      font-size: 13px;
-      color: var(--text);
-    }
-    .stats{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .stat{
-      padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .stat b{display:block; font-size: 14px}
-    .stat span{display:block; font-size: 12px; color: var(--muted); margin-top:2px}
-
-    .section{padding: 22px 0}
-    .section h2{
-      font-size: 20px;
-      margin: 0 0 10px;
-      letter-spacing:.2px;
-    }
-    .section p{margin: 0 0 10px; color: var(--muted)}
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px}
-    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px}
-
-    .card{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 16px 14px;
-      box-shadow: 0 10px 20px rgba(0,0,0,.10);
-    }
-    .card h3{margin: 0 0 8px; font-size: 16px}
-    .card .muted{color: var(--muted); font-size: 13px}
-    .icon{
-      width:36px; height:36px; border-radius: 14px;
-      display:inline-flex; align-items:center; justify-content:center;
-      margin-bottom: 8px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-    }
-    .icon.green{background: rgba(34,197,94,.15); border-color: rgba(34,197,94,.25)}
-    .icon.purple{background: rgba(124,58,237,.16); border-color: rgba(124,58,237,.28)}
-    .icon.blue{background: rgba(96,165,250,.16); border-color: rgba(96,165,250,.28)}
-    .icon span{font-weight:900}
-
-    .job{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .job::before{
-      content:"";
-      position:absolute; inset:-2px -2px auto -2px;
-      height: 5px;
-      background: linear-gradient(90deg, rgba(34,197,94,.75), rgba(96,165,250,.65), rgba(124,58,237,.65));
-      opacity:.85;
-    }
-    .job h3{margin: 6px 0 6px; font-size: 15px}
-    .job .tagRow{display:flex; flex-wrap:wrap; gap:6px; margin-top: 8px}
-    .tag{
-      font-size: 12px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      white-space:nowrap;
-    }
-    .tag strong{color: var(--text)}
-    .job .meta{font-size: 13px; color: var(--muted)}
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,.10);
-      margin: 12px 0;
-    }
-
-    .steps{display:grid; gap: 10px}
-    .step{
-      display:flex; gap: 12px;
-      padding: 14px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .step .num{
-      width:34px; height:34px; border-radius: 14px;
-      display:flex; align-items:center; justify-content:center;
-      font-weight: 900;
-      background: rgba(96,165,250,.15);
-      border: 1px solid rgba(96,165,250,.25);
-      flex: 0 0 auto;
-    }
-    .step b{display:block}
-    .faq details{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      border-radius: var(--radius);
-      padding: 12px 14px;
-    }
-    .faq details + details{margin-top:10px}
-    .faq summary{
-      cursor:pointer;
-      font-weight: 800;
-      list-style:none;
-    }
-    .faq summary::-webkit-details-marker{display:none}
-    .faq .answer{margin-top:8px; color: var(--muted); font-size: 14px}
-
-    .finalCta{
-      margin: 18px 0 28px;
-      border-radius: calc(var(--radius) + 4px);
-      background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(96,165,250,.14), rgba(34,197,94,.14));
-      border: 1px solid rgba(255,255,255,.12);
-      padding: 18px 14px;
-      box-shadow: var(--shadow);
-    }
-    .finalCta h2{margin:0 0 6px}
-    .finalCta p{margin:0 0 10px; color: var(--muted)}
-    .footer{
-      padding: 24px 0 40px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .footer a{color: rgba(255,255,255,.70)}
-
-    /* 右下固定のCTA（スマホ強い） */
-    .floating{
-      position: fixed;
-      right: 16px; bottom: 16px;
-      z-index: 80;
-      display:flex; flex-direction:column; gap:10px;
-    }
-    .floating .btn{padding: 12px 14px; border-radius: 16px}
-    .floating .btn-primary{box-shadow: 0 18px 38px rgba(34,197,94,.20)}
-    .floating .hint{
-      font-size: 11px;
-      color: rgba(255,255,255,.75);
-      background: rgba(10,14,28,.55);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      padding: 8px 10px;
-      backdrop-filter: blur(10px);
-      max-width: 240px;
-    }
-
-    /* レスポンシブ */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr}
-      .stats{grid-template-columns: 1fr 1fr}
-    }
-    @media (max-width: 720px){
-      .grid3{grid-template-columns: 1fr}
-      .grid2{grid-template-columns: 1fr}
-      .stats{grid-template-columns: 1fr 1fr}
-      .topbar-inner{padding: 10px 0}
-      .floating{left: 16px; right: 16px}
-      .floating .btn{width:100%}
-      .floating .hint{max-width:none}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保育士採用特設サイト | あなたらしく輝ける場所</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Zen Maru Gothic for soft look) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-pink': '#fff0f5', // Lavender blush
+                        'brand-pink-dark': '#fbcfe8',
+                        'brand-purple': '#f3e8ff', // Purple 100
+                        'brand-purple-dark': '#d8b4fe',
+                        'accent': '#ff9f89', // Soft coral/orange
+                        'text-main': '#4a4a4a',
+                        'text-light': '#7a7a7a',
+                    },
+                    fontFamily: {
+                        sans: ['"Zen Maru Gothic"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Zen Maru Gothic", sans-serif;
+            color: #4a4a4a;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #fff0f5 0%, #f3e8ff 100%);
+        }
+        .wave-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(138% + 1.3px);
+            height: 60px;
+        }
+        /* Soft shadow for cards */
+        .soft-card {
+            box-shadow: 0 10px 25px -5px rgba(219, 180, 254, 0.15), 0 8px 10px -6px rgba(219, 180, 254, 0.1);
+        }
+    </style>
 </head>
+<body class="bg-white leading-relaxed">
 
-<body>
-  <!-- ===============================
-       設定（ここだけ最初に直す）
-       =============================== -->
-  <script>
-    // ★ここをあなたのLINEリンクに変更（今のURLを入れてあります）
-    const LINE_URL = "https://works.do/R/ti/p/ho.73521@hoikushicarrier";
-  </script>
-
-  <div class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:14px">保育士の転職相談</div>
-          <div style="font-size:12px; color:rgba(255,255,255,.65)">LINEで求人提案（時間固定OK）</div>
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm border-b border-brand-pink-dark">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-600 flex items-center">
+                <i class="fa-solid fa-seedling text-brand-purple-dark mr-2"></i>
+                <span class="text-sm md:text-lg">ひだまり保育園 採用サイト</span>
+            </h1>
+            <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-brand-purple-dark transition">園の魅力</a>
+                <a href="#voice" class="hover:text-brand-purple-dark transition">先輩の声</a>
+                <a href="#flow" class="hover:text-brand-purple-dark transition">選考フロー</a>
+            </nav>
+            <a href="#contact" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white text-sm font-bold py-2 px-6 rounded-full shadow-md hover:opacity-90 transition transform hover:-translate-y-0.5">
+                見学申し込み
+            </a>
         </div>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end">
-        <span class="pill">✅ <b>しつこい電話なし</b></span>
-        <a class="btn btn-primary btn-small" id="topCta" href="#">LINEで求人を受け取る</a>
-      </div>
-    </div>
-  </div>
+    </header>
 
-  <header class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <section class="hero-card hero-left">
-          <div class="badges">
-            <span class="pill">無料相談</span>
-            <span class="pill">LINE中心OK</span>
-            <span class="pill">見るだけOK</span>
-            <span class="pill">現職バレ配慮</span>
-          </div>
-
-          <h1 class="headline">
-            残業・持ち帰りがつらい保育士さんへ。<br>
-            <span style="color:rgba(34,197,94,.95)">時間固定OK</span>の求人、<span style="color:rgba(96,165,250,.95)">LINE</span>でまとめて提案します。
-          </h1>
-
-          <p class="sub">
-            希望条件を送るだけで、合う求人だけ届きます。<br>
-            「まずは求人だけ見たい」「電話は苦手」でも大丈夫です。
-          </p>
-
-          <div class="checks">
-            <div class="check"><i>✓</i><div><b>しつこい電話なし</b><div class="muted">連絡はLINE中心にできます</div></div></div>
-            <div class="check"><i>✓</i><div><b>相談・求人提案は完全無料</b><div class="muted">費用は一切かかりません</div></div></div>
-            <div class="check"><i>✓</i><div><b>見るだけOK</b><div class="muted">合わなければスルーでOK</div></div></div>
-          </div>
-
-          <div class="ctaRow">
-            <a class="btn btn-primary" id="heroCta" href="#">LINEで求人を受け取る（30秒）</a>
-            <a class="btn btn-secondary" href="#jobs">どんな求人が届く？</a>
-          </div>
-
-          <div class="mini-note">
-            ※登録後に無理な勧誘はしません。希望条件に合う求人のみご案内します。
-          </div>
-        </section>
-
-        <aside class="hero-card hero-right">
-          <div class="imageBox" aria-label="保育のイメージ画像">
-            <img
-              src="https://images.unsplash.com/photo-1526634332515-d56c6b7e3b82?auto=format&fit=crop&w=1200&q=80"
-              alt="保育の現場をイメージした写真">
-            <div class="imageOverlay" aria-hidden="true"></div>
-            <div class="imageCaption">
-              「条件が合う園」だけ、短時間で提案。<br>
-              <span style="color:rgba(34,197,94,.95); font-weight:800">時間固定 / 残業少なめ / 雰囲気重視</span>
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 md:pt-32 md:pb-32 gradient-bg overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 z-10 mb-10 md:mb-0">
+                <span class="inline-block bg-white text-purple-500 text-sm font-bold px-4 py-1 rounded-full mb-4 shadow-sm border border-purple-100">
+                    <i class="fa-regular fa-star mr-1"></i> 2026年度 新規採用開始
+                </span>
+                <h2 class="text-3xl md:text-5xl font-bold leading-tight mb-6 text-gray-700">
+                    もう一度、<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">心からの笑顔</span>で<br>
+                    子どもと向き合いませんか？
+                </h2>
+                <p class="text-gray-600 mb-8 leading-loose">
+                    持ち帰り仕事なし、残業ほぼゼロ。<br>
+                    保育士さんの「働きやすさ」を一番に考えたら、<br>
+                    子どもたちへの「愛しさ」がもっと深まりました。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="text-center bg-accent text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-orange-400 transition transform hover:-translate-y-1">
+                        まずは園見学へ行く <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#about" class="text-center bg-white text-gray-600 border border-gray-200 font-bold py-4 px-8 rounded-full shadow-sm hover:bg-gray-50 transition">
+                        詳しく見る
+                    </a>
+                </div>
             </div>
-          </div>
-
-          <div class="stats">
-            <div class="stat">
-              <b>提案の基準</b>
-              <span>希望条件から逆算して厳選</span>
+            <div class="md:w-1/2 relative z-10">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
+                    <!-- Placeholder for Hero Image -->
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="笑顔の保育士と子供" class="w-full h-auto object-cover">
+                </div>
+                <!-- Decorative Circle -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
             </div>
-            <div class="stat">
-              <b>やり取り</b>
-              <span>LINE中心でOK</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="wrap">
-        <h2>こんな悩み、ありませんか？</h2>
-        <p>このLPは “時間固定・残業を減らしたい” 人向けに作っています。</p>
-
-        <div class="grid3">
-          <div class="card">
-            <div class="icon purple"><span>⏱</span></div>
-            <h3>時間が読めない</h3>
-            <div class="muted">シフトがきつい／延長で帰れない</div>
-          </div>
-          <div class="card">
-            <div class="icon blue"><span>📄</span></div>
-            <h3>持ち帰りが常態化</h3>
-            <div class="muted">書類・制作・行事準備が終わらない</div>
-          </div>
-          <div class="card">
-            <div class="icon green"><span>🧠</span></div>
-            <h3>園の雰囲気が不安</h3>
-            <div class="muted">人間関係／離職率／残業実態が見えない</div>
-          </div>
         </div>
-
-        <div class="divider"></div>
-
-        <div class="grid2">
-          <div class="card">
-            <h3>私たちの約束</h3>
-            <div class="muted">
-              希望に合わない求人を“数打ち”で送るのではなく、<b>合う求人だけ</b>を提案します。<br>
-              忙しい人ほど、短時間で判断できるように整理してお届けします。
-            </div>
-          </div>
-          <div class="card">
-            <h3>選ばれる理由（ここが差になります）</h3>
-            <ul class="muted" style="margin:8px 0 0 18px">
-              <li><b>時間固定・残業少なめ</b>の条件から逆算して候補を厳選</li>
-              <li>希望があれば<b>条件交渉</b>（給与/勤務時間/配属など）も代行</li>
-              <li><b>園の雰囲気</b>や働き方（残業実態など）を確認しながら提案</li>
-            </ul>
-          </div>
+        
+        <!-- Wave Divider -->
+        <div class="wave-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#ffffff"></path>
+            </svg>
         </div>
-      </div>
     </section>
 
-    <section class="section" id="jobs">
-      <div class="wrap">
-        <h2>例えば、こんな求人が届きます（サンプル）</h2>
-        <p>※ここは後で実態に合わせて調整してください（誇張は避けるのが安全）。</p>
-
-        <div class="grid3">
-          <div class="job">
-            <h3>時間固定 9:00〜18:00｜認可保育園</h3>
-            <div class="meta">月給：25万円〜 / 年休：120日〜 / 残業：月5h以内目安</div>
-            <div class="tagRow">
-              <span class="tag"><strong>時間固定</strong></span>
-              <span class="tag">持ち帰り削減</span>
-              <span class="tag">ICT活用</span>
+    <!-- Concerns Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-pink-500 font-bold mb-2">CHECK LIST</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">こんなお悩みありませんか？</h3>
             </div>
-          </div>
-
-          <div class="job">
-            <h3>土日休み多め｜行事負担少なめ</h3>
-            <div class="meta">月給：24万円〜 / 年休：125日〜 / 書類：フォーマット整備</div>
-            <div class="tagRow">
-              <span class="tag"><strong>行事少なめ</strong></span>
-              <span class="tag">書類簡略化</span>
-              <span class="tag">人員配置厚め</span>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-pink-50 transition duration-300">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">📝</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">持ち帰り仕事が多い</h4>
+                    <p class="text-sm text-gray-500">書類作成や制作物に追われて、プライベートな時間がとれない。</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-purple-50 transition duration-300">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">😓</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">人間関係に疲れた</h4>
+                    <p class="text-sm text-gray-500">職員間の連携がうまくいかず、精神的な負担が大きい。</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl text-center border border-gray-100 relative group hover:bg-pink-50 transition duration-300">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm text-2xl group-hover:scale-110 transition">👶</div>
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">保育に集中できない</h4>
+                    <p class="text-sm text-gray-500">行事や業務に追われ、一人ひとりの子どもと向き合えない。</p>
+                </div>
             </div>
-          </div>
 
-          <div class="job">
-            <h3>駅近｜人間関係の不安が少ない園を優先提案</h3>
-            <div class="meta">月給：23.5万円〜 / 残業：少なめ / 職員定着率重視</div>
-            <div class="tagRow">
-              <span class="tag"><strong>雰囲気重視</strong></span>
-              <span class="tag">定着率</span>
-              <span class="tag">面接対策付き</span>
+            <div class="text-center mt-12">
+                <div class="inline-block bg-brand-pink p-6 rounded-xl border border-pink-200">
+                    <p class="text-lg md:text-xl font-bold text-gray-700">
+                        その悩み、<br class="md:hidden">
+                        <span class="text-purple-500 text-2xl">ひだまり保育園</span>なら解決できます！
+                    </p>
+                </div>
+                <div class="flex justify-center mt-4 text-pink-300">
+                    <i class="fa-solid fa-chevron-down text-3xl animate-bounce"></i>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="finalCta" style="margin-top:14px">
-          <h2>あなたの希望条件で、合う求人だけ受け取る</h2>
-          <p>LINEで「希望条件」を送るだけ。求人は整理してお送りします。</p>
-          <div class="ctaRow">
-            <a class="btn btn-primary" id="midCta" href="#">LINEで求人を受け取る（30秒）</a>
-            <a class="btn btn-secondary" href="#flow">流れを見る</a>
-          </div>
-          <div class="mini-note">※やり取りはLINE中心OK。電話が必要な時も事前に確認します。</div>
-        </div>
-      </div>
     </section>
 
-    <section class="section" id="flow">
-      <div class="wrap">
-        <h2>ご利用の流れ（最短3ステップ）</h2>
-        <p>「登録したら何をされるの？」を見える化して、不安を減らします。</p>
+    <!-- Why Us / Strengths -->
+    <section id="about" class="py-20 bg-brand-pink relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="bg-white text-accent text-xs font-bold px-3 py-1 rounded-full shadow-sm mb-3 inline-block">OUR STRENGTHS</span>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">私たちが選ばれる3つの理由</h3>
+            </div>
 
-        <div class="steps">
-          <div class="step">
-            <div class="num">1</div>
-            <div>
-              <b>LINEを追加（30秒）</b>
-              <div class="muted">まずは友だち追加だけでOK。</div>
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="order-2 md:order-1">
+                    <div class="bg-white p-2 rounded-2xl shadow-lg transform -rotate-2">
+                        <img src="https://images.unsplash.com/photo-1577896335477-2858506f4891?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="ICT導入" class="rounded-xl w-full">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="text-purple-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">01</div>
+                    <h4 class="text-2xl font-bold text-gray-700 mb-4">ICT導入で<br><span class="text-purple-500 text-3xl">書類業務をゼロ</span>へ</h4>
+                    <p class="text-gray-600 mb-4 leading-loose">
+                        手書きの連絡帳や指導案は廃止し、タブレットで完結。勤務時間内に事務時間をしっかり確保しているため、持ち帰り仕事は原則禁止しています。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-400 mr-2"></i> 連絡帳アプリ導入済み</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-pink-400 mr-2"></i> ノンコンタクトタイムの確保</li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="step">
-            <div class="num">2</div>
-            <div>
-              <b>希望条件を送る（テンプレでOK）</b>
-              <div class="muted">例：エリア／雇用形態／時間固定／給与／園の雰囲気など</div>
-            </div>
-          </div>
-          <div class="step">
-            <div class="num">3</div>
-            <div>
-              <b>合う求人だけ届く → 気になるものだけ返信</b>
-              <div class="muted">応募は、あなたの許可をもらってから進めます。</div>
-            </div>
-          </div>
-        </div>
 
-        <div class="grid2" style="margin-top:12px">
-          <div class="card">
-            <h3>追加直後に送ると良い一言（コピペ用）</h3>
-            <div class="muted">
-              「希望：エリア◯◯、雇用形態◯◯、時間固定（例9-18）、給与◯◯以上、残業少なめ、園の雰囲気重視。まずは求人だけ見たいです」
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="order-1">
+                    <div class="text-pink-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">02</div>
+                    <h4 class="text-2xl font-bold text-gray-700 mb-4">有給取得率<span class="text-pink-500 text-3xl">100%</span>の<br>協力体制</h4>
+                    <p class="text-gray-600 mb-4 leading-loose">
+                        「お互い様」の精神で、急な体調不良や家庭の事情もチームでカバー。希望休も通りやすく、プライベートも充実させることができます。
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-purple-400 mr-2"></i> 産休・育休復帰率高</li>
+                        <li class="flex items-center text-sm text-gray-600"><i class="fa-solid fa-check text-purple-400 mr-2"></i> サービス残業なし</li>
+                    </ul>
+                </div>
+                <div class="order-2">
+                    <div class="bg-white p-2 rounded-2xl shadow-lg transform rotate-2">
+                        <img src="https://images.unsplash.com/photo-1596908905631-7fe2dd220d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="笑顔のスタッフ" class="rounded-xl w-full">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card">
-            <h3>（後で強化するとさらにCVが伸びる）</h3>
-            <ul class="muted" style="margin:8px 0 0 18px">
-              <li>LINEの自動応答（希望条件ボタン）</li>
-              <li>エリア別LP（例：tokyo.html など）</li>
-              <li>計測（GA4 / 広告 / UTM）</li>
-            </ul>
-          </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="bg-white p-2 rounded-2xl shadow-lg transform -rotate-1">
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="少人数保育" class="rounded-xl w-full">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="text-purple-500 font-bold text-6xl opacity-20 mb-[-20px] ml-[-10px]">03</div>
+                    <h4 class="text-2xl font-bold text-gray-700 mb-4">ゆとりある<br><span class="text-purple-500 text-3xl">少人数担当制</span></h4>
+                    <p class="text-gray-600 mb-4 leading-loose">
+                        国の基準よりも余裕を持った配置基準を採用。一人ひとりの「できた！」を見逃さず、子どもの成長を共に喜べる環境です。
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+        <!-- Abstract Curve Background -->
+        <svg class="absolute top-0 left-0 w-full h-full -z-0 opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 0 L100 0 L100 100 Q 50 80 0 100 Z" fill="#fff" />
+        </svg>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <h2>よくある質問</h2>
-        <div class="faq">
-          <details>
-            <summary>Q. 本当に無料ですか？</summary>
-            <div class="answer">A. はい。求職者の方から費用は一切いただきません。</div>
-          </details>
-          <details>
-            <summary>Q. 電話が苦手です…LINEだけで進められますか？</summary>
-            <div class="answer">A. 可能です。基本はLINE中心で進め、必要な場合も事前に確認します。</div>
-          </details>
-          <details>
-            <summary>Q. まだ転職するか迷っています。</summary>
-            <div class="answer">A. 迷っていてOKです。情報収集・求人を見るだけでも大丈夫です。</div>
-          </details>
-          <details>
-            <summary>Q. 今の職場にバレませんか？</summary>
-            <div class="answer">A. ご本人の許可なく現職へ連絡することはありません。</div>
-          </details>
-          <details>
-            <summary>Q. どんな希望を伝えればいいですか？</summary>
-            <div class="answer">A. エリア／雇用形態／勤務時間（固定希望など）／給与／休日／園の雰囲気（人間関係）を送るとスムーズです。</div>
-          </details>
+    <!-- Staff Voice -->
+    <section id="voice" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-pink-500 font-bold mb-2">VOICE</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">働く先生たちの声</h3>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Voice 1 -->
+                <div class="bg-brand-pink/30 p-8 rounded-3xl relative soft-card">
+                    <div class="absolute -top-6 left-8 bg-white p-2 rounded-full shadow-md">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aさん" class="w-12 h-12 rounded-full object-cover">
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-xs text-gray-500 mb-2">経験5年目 / 20代女性</p>
+                        <h5 class="font-bold text-lg text-purple-600 mb-3">「自分の子どもとの時間が増えました」</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            以前の職場では持ち帰り仕事が当たり前でしたが、ここでは本当に定時で上がれます。家に帰ってから自分の子どもとゆっくり遊ぶ余裕ができ、心の余裕が仕事にも良い影響を与えていると感じます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Voice 2 -->
+                <div class="bg-brand-purple/30 p-8 rounded-3xl relative soft-card">
+                    <div class="absolute -top-6 left-8 bg-white p-2 rounded-full shadow-md">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Bさん" class="w-12 h-12 rounded-full object-cover">
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-xs text-gray-500 mb-2">ブランクあり / 40代女性</p>
+                        <h5 class="font-bold text-lg text-pink-600 mb-3">「ブランクがあっても温かく迎えてくれました」</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            出産を機に退職し、10年ぶりの復帰でした。ICTなど新しいことへの不安もありましたが、周りの先生方が優しく教えてくれるので安心して働けています。人間関係の良さが一番の自慢です。
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="finalCta">
-          <h2>時間固定OKの求人、まずは“見るだけ”でもOK</h2>
-          <p>希望条件を送るだけで、合う求人だけ届きます。</p>
-          <div class="ctaRow">
-            <a class="btn btn-primary" id="bottomCta" href="#">LINEで求人を受け取る（30秒）</a>
-            <a class="btn btn-secondary" href="#top">上に戻る</a>
-          </div>
-          <div class="mini-note">
-            ※利用規約・プライバシーポリシー等は後ほど追加でOK（今は集客用の骨格を優先）。
-          </div>
-        </div>
+    <!-- Selection Flow -->
+    <section id="flow" class="py-20 bg-gradient-to-b from-white to-brand-pink">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-700">採用までの流れ</h3>
+                <p class="text-gray-500 mt-2">人柄重視の採用です。まずは園の雰囲気を見に来てください。</p>
+            </div>
 
-        <div class="footer">
-          <div>運営者情報／プライバシーポリシー／利用規約（リンク） ※あとで差し替え</div>
-          <div style="margin-top:6px">© Your Company</div>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center relative">
+                    <!-- Step 1 -->
+                    <div class="w-full md:w-1/3 text-center relative z-10 mb-8 md:mb-0">
+                        <div class="w-20 h-20 bg-white border-4 border-pink-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm">
+                            📱
+                        </div>
+                        <h4 class="font-bold text-gray-700">応募・問い合わせ</h4>
+                        <p class="text-xs text-gray-500 mt-2">フォームまたはLINEから<br>お気軽にどうぞ</p>
+                    </div>
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden md:block absolute top-10 left-0 w-full h-1 bg-pink-100 z-0"></div>
+                    
+                    <!-- Step 2 -->
+                    <div class="w-full md:w-1/3 text-center relative z-10 mb-8 md:mb-0">
+                        <div class="w-20 h-20 bg-white border-4 border-purple-200 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-sm">
+                            👀
+                        </div>
+                        <h4 class="font-bold text-gray-700">園見学・面談</h4>
+                        <p class="text-xs text-gray-500 mt-2">普段の保育の様子を<br>ご覧いただけます</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="w-full md:w-1/3 text-center relative z-10">
+                        <div class="w-20 h-20 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-lg transform scale-110">
+                            ✨
+                        </div>
+                        <h4 class="font-bold text-gray-700">内定</h4>
+                        <p class="text-xs text-gray-500 mt-2">入社時期などは<br>柔軟に調整可能です</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <div class="floating" aria-hidden="false">
-    <div class="hint">👆「まずは求人だけ見たい」でもOK。LINEで希望条件を送るだけ。</div>
-    <a class="btn btn-primary" id="floatCta" href="#">LINEで求人を受け取る</a>
-  </div>
+    <!-- Q&A -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-700">よくあるご質問</h3>
+            </div>
+            
+            <div class="space-y-4">
+                <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>ピアノが苦手なのですが大丈夫ですか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-pink-300"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed animate-fadeIn">
+                        全く問題ありません！得意な先生が担当したり、CDを活用したりと柔軟に対応しています。それぞれの得意分野を活かして保育をしています。
+                    </div>
+                </details>
 
-  <script>
-    // CTAにLINEリンクを一括反映
-    const ids = ["topCta","heroCta","midCta","bottomCta","floatCta"];
-    ids.forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.href = LINE_URL;
-    });
-  </script>
+                <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>車通勤は可能ですか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-pink-300"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed">
+                        はい、職員専用の無料駐車場を完備しています。ガソリン代の補助も規定内で支給しております。
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium p-6 list-none text-gray-700">
+                        <span class="flex items-center"><span class="text-pink-500 font-bold mr-4">Q.</span>子育て中でも働けますか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-pink-300"></i>
+                        </span>
+                    </summary>
+                    <div class="text-gray-600 px-6 pb-6 pl-14 text-sm leading-relaxed">
+                        もちろんです。現在も子育て中のスタッフが多数在籍しています。お子様の急な発熱や学校行事の際も、チームで協力してシフトを調整しています。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Footer -->
+    <section id="contact" class="pt-20 pb-10 gradient-bg">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-700 mb-6">
+                まずは園の雰囲気を<br>見に来ませんか？
+            </h2>
+            <p class="text-gray-600 mb-10">
+                履歴書不要・私服でOKです。<br>
+                「ちょっと話を聞いてみたい」というだけでも大歓迎です。
+            </p>
+
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl soft-card mb-16">
+                <form class="space-y-6 text-left max-w-lg mx-auto">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">お名前 <span class="text-pink-500 text-xs">必須</span></label>
+                        <input type="text" class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200" placeholder="保育 花子">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">電話番号</label>
+                        <input type="tel" class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200" placeholder="090-1234-5678">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">希望内容</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-purple-200">
+                            <option>園見学を希望</option>
+                            <option>面接を希望</option>
+                            <option>まずは話を聞きたい</option>
+                        </select>
+                    </div>
+                    <div class="pt-4">
+                        <button type="button" class="w-full bg-gradient-to-r from-accent to-pink-400 text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl hover:opacity-90 transition transform hover:-translate-y-0.5">
+                            送信する（1分で完了）
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-gray-400 mb-4">- または -</p>
+                    <button class="bg-[#06C755] text-white font-bold py-3 px-8 rounded-full shadow hover:opacity-90 transition flex items-center justify-center mx-auto w-full md:w-auto">
+                        <i class="fa-brands fa-line text-2xl mr-2"></i> LINEで気軽に相談
+                    </button>
+                </div>
+            </div>
+
+            <footer class="text-gray-500 text-sm border-t border-purple-200/50 pt-10">
+                <div class="mb-4 flex justify-center gap-4">
+                    <a href="#" class="hover:text-purple-500">運営会社</a>
+                    <a href="#" class="hover:text-purple-500">プライバシーポリシー</a>
+                </div>
+                <p>&copy; 2026 Hidamari Nursery School. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </section>
+
 </body>
 </html>
